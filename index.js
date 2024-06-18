@@ -29,6 +29,10 @@ recognition.onerror = (event) => {
   restartRecognition(); // Restart on error
 };
 
+recognition.onerror = (event) => {
+  console.error(`Speech recognition error detected: ${event.error}`);
+};
+
 const restartRecognition = () => {
   setTimeout(() => {
     recognition.stop();
