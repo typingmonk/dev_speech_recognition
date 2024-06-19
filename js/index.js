@@ -21,21 +21,9 @@ recognition.onresult = function(event) {
 
 recognition.onend = () => {
   console.log('Speech recognition service disconnected');
-  restartRecognition(); // Restart the recognition service
+  recognition.start();
 };
 
 recognition.onerror = (event) => {
-  console.error('Speech recognition error detected:', event.error);
-  restartRecognition(); // Restart on error
-};
-
-recognition.onerror = (event) => {
-  console.error(`Speech recognition error detected: ${event.error}`);
-};
-
-const restartRecognition = () => {
-  setTimeout(() => {
-    recognition.stop();
-    recognition.start();
-  }, 1000); // Restart after a short delay
+  console.log('Speech recognition error detected:', event.error);
 };
